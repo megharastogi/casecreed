@@ -1,0 +1,47 @@
+
+<div id="lawyer_show">
+
+	<div class="subheading">Listing Available Timings On <%= @available_timing.date_on.strftime("%m/%d/%Y") %></div>
+	<p>This is a list of all your available slots for the above date. Disabled slots will not be visible to clients. Status "0" indicates empty slot, "1" indicates booked slot.</p>
+	<p>
+		<b>From:</b>
+		<%= @available_timing.time_from.strftime("%I %p") %>
+	</p>
+
+	<p>
+		<b>To:</b>
+		<%= @available_timing.time_to.strftime("%I %p") %>
+	</p>
+
+
+	<%= link_to 'Back', available_timings_path %>
+
+	<br/>
+
+	<table id="index_page">
+		<tr>
+			<th>Time From</th>
+			<th>Time To</th>
+			<th>Status</th>
+			<th></th>
+		</tr>
+
+		<% @available_timing.slots.each do |slot| %>
+		<tr class="<%= cycle("even", "odd") -%>">
+			<td><%= slot.start_time.strftime("%I.%M %p")  %></td>
+			<td><%= slot.end_time.strftime("%I.%M %p")  %></td>
+			<td><%= slot.status %></td>
+			<% if slot.active == 1 %>
+				<% if slot.status == 1 %>
+				<td><%= link_to 'Disable', disable_slot_path(slot), :confirm => 'Disabling the slot will hide this from your availabel timings and will cancel your appointment. Are you sure?' %></td>
+				<% else %>
+				<td><%= link_to 'Disable', disable_slot_path(slot), :confirm => 'Are you sure?' %></td>
+				<% end %>
+				<% else %>
+				<td><%= link_to 'Enable', enable_slot_path(slot), :confirm => 'Are you sure?' %></td>
+				<% end %>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+

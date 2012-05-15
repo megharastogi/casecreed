@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @vote_for_next_city.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @vote_for_next_city.last_name %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @vote_for_next_city.city %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @vote_for_next_city.email %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @vote_for_next_city.comment %>
+</p>
+
+
+<%= link_to 'Edit', edit_vote_for_next_city_path(@vote_for_next_city) %> |
+<%= link_to 'Back', vote_for_next_cities_path %>

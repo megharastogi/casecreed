@@ -1,0 +1,39 @@
+
+
+<div id="appointment_index">
+
+	<div class='subheading'>My Appointments</div>
+	<p>This is a list of all your appointments fixed using casecreed</p>
+	<table id="index_page">
+		<tr>
+			<th>Date</th>
+			<th>From</th>
+			<th>To</th>
+			<th>Description</th>
+			<% if session[:account_type]=="lawyer" %>
+			<th>Client</th>
+			<% elsif session[:account_type]=="user" %>
+			<th>Lawyer</th>
+			<% end %>
+			<th>Action</th>
+		</tr>
+
+		<% @appointments.each do |appointment| %>
+		<tr class="<%= cycle("even", "odd") -%>">
+			<td style="vertical-align:top;"><%= appointment.slot.date_on %></td>
+			<td  style="vertical-align:top;"><%= appointment.slot.start_time.strftime("%I.%M %p") %></td>
+			<td style="vertical-align:top;"><%= appointment.slot.end_time.strftime("%I.%M %p") %></td>
+			<td style="width:430px;"><%= appointment.description %></td>
+			<% if session[:account_type]=="lawyer" %>
+			<td style="vertical-align:top;"><%= link_to appointment.client.full_name, appointment.client %></td>
+			<% elsif session[:account_type]=="user" %>
+			<td style="vertical-align:top;"><%= link_to appointment.lawyer.full_name, lawyer_path(appointment.lawyer) %></td>
+			<% end %>
+			<td style="vertical-align:top;"><%= link_to 'Cancel Appointment', appointment, :confirm => 'Are you sure?', :method => :delete %></td>
+		</tr>
+		<% end %>
+	</table>
+
+</div>
+<div>	<%= will_paginate @appointments  %></div>
+

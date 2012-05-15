@@ -1,0 +1,78 @@
+config:
+  from_address: notifications@casecreed.com
+
+carriers:
+  alltel:
+    name: Alltel
+    value: @message.alltel.com
+  ameritech:
+    name: Ameritech
+    value: @paging.acswireless.com
+  at&t:
+    name: AT&T
+    value: @txt.att.net
+  bell-atlantic:
+    name: Bell Atlantic
+    value: @message.bam.com
+  bellsouthmobility:
+    name: Bellsouth Mobility
+    value: @blsdcs.net
+  blueskyfrog:
+    name: BlueSkyFrog
+    value: @blueskyfrog.com
+  boost:
+    name: Boost Mobile
+    value: @myboostmobile.com
+  cellularsouth:
+    name: Cellular South
+    value: @csouth1.com
+  comcast:
+    name: Comcast PCS
+    value: @comcastpcs.textmsg.com
+  cricket:
+    name: Cricket
+    value: @sms.mycricket.com
+  kajeet:
+    name: kajeet
+    value: @mobile.kajeet.net
+  metropcs:
+    name: Metro PCS
+    value: @mymetropcs.com
+  nextel:
+    name: Nextel
+    value: @messaging.nextel.com
+  powertel:
+    name: Powertel
+    value: @ptel.net
+  pscwireless:
+    name: PSC Wireless
+    value: @sms.pscel.com
+  qwest:
+    name: Qwest
+    value: @qwestmp.com
+  southernlink:
+    name: Southern Link
+    value: @page.southernlinc.com
+  sprint:
+    name: Sprint PCS
+    value: @messaging.sprintpcs.com
+  suncom:
+    name: Suncom
+    value: @tms.suncom.com
+  t-mobile:
+    name: T-Mobile
+    value: @tmomail.net
+  tracfone:
+    name: Tracfone
+    value: @mmst5.tracfone.com
+  telus-mobility:
+    name: Telus Mobility
+    value: @msg.telus.com
+  virgin:
+    name: Virgin Mobile
+    value: @vmobl.net
+  verizon:
+    name: Verizon Wireless
+    value: @vtext.com
+  # International Carriers
+

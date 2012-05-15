@@ -1,0 +1,42 @@
+<div class='search_lawyers'>
+	<div class="subheading">Enter your Name to Search your account</div>
+	<% form_tag search_search_accounts_path do -%>
+	<%= text_field_tag 'search', params[:search] %>
+	<%= submit_tag "Search" , :class=> "orange_button"%>
+	<% end -%>
+</div>
+<table id="lawyers">
+	<tr>
+		<th id="lawyer_heading">Search results</th>
+		<th class="day">Firm name</th>
+		<th class="day">Office number</th>
+		<th class="day">Claim for this account</th>
+	</tr>
+
+	<% @lawyers.each_with_index do |lawyer, index| %>
+	<tr>
+		<td class="lawyer_info" style="width:200px;">
+			<div class="map_marker">
+				<%= pagination_index(params[:page], index) %>)
+				&nbsp;
+			</div>
+			<div class="table_img"><%= link_to image_tag(lawyer.avatar.url(:thumb)), claim_search_account_path(lawyer) %></div>
+			<div class="add_info">
+				<div style="height:68px;">
+					<p class="lawyer_name"><%= link_to lawyer.full_name, claim_search_account_path(lawyer) %></p>
+					<p class="address">
+						<%= lawyer.lawyer_detail.address unless lawyer.lawyer_detail.nil? %>
+					</p>
+				</div>
+			</div>
+		</td>
+		<td class="day day_color">	<%= lawyer.lawyer_detail.firm_name unless lawyer.lawyer_detail.nil?%></td>
+		<td style="text-align:center;">	<%= lawyer.lawyer_detail.office_phone unless lawyer.lawyer_detail.nil?%></td>
+		<td class="day day_color" style="font-size:12px !important;"> <%= link_to "Claim for this profile", claim_search_account_path(lawyer) %> </td>
+	</tr>
+	<% end %>
+
+</table>
+<div>	<%= will_paginate @lawyers , { :params => { :search =>
+	params[:search]}} %></div>
+

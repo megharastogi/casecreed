@@ -1,0 +1,71 @@
+<div id="claim_show">
+	<div class="subheading">Claim for this profile</div>
+	<table id="lawyers">
+		<tr>
+			<th id="lawyer_heading">Name</th>
+			<th>Firm Name</th>
+			<th>Office Number</th>
+		</tr>
+
+
+		<tr>
+			<td class="lawyer_info">
+				<div class="table_img"><a href="#"><%= image_tag(@lawyer.avatar.url(:thumb)) %></a></div>
+				<div class="add_info">
+					<div style="height:68px;">
+						<p class="lawyer_name"><a href="#"><%= @lawyer.full_name %></a></p>
+						<p class="address">
+							<%= @lawyer.lawyer_detail.address %>
+						</p>
+					</div>
+				</div>
+			</td>
+			<td style="vertical-align: top;">	<%= @lawyer.lawyer_detail.firm_name %></td>
+			<td style="vertical-align: top;">	<%= @lawyer.lawyer_detail.office_phone %></td>
+
+		</tr>
+
+
+	</table>
+
+
+	<div id="forms">
+		<p>
+			Please provide some details that help us to identify that this belongs to you. We will contact you soon.
+		</p>
+		<div id="form_left">
+			<%= form_for @claim , :as => :claim , :url => request_sent_search_account_path do |f| %>
+			<% if @claim.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@claim.errors.count, "error") %> prohibited this claim from being saved:</h2>
+
+				<ul>
+					<% @claim.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
+			<div class="field">
+				<%= f.label :email %>
+				<%= f.text_field :email %>
+			</div>
+
+			<div class="field">
+				<%= f.label :phone %>
+				<%= f.text_field :phone %>
+			</div>
+
+			<div class="field">
+				<%= f.label :message %>
+				<%= f.text_area :message %>
+			</div>
+
+			<div class="actions">
+				<%= f.submit "Request for Claim" ,:class => "orange_really_big_button" %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+

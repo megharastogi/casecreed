@@ -1,0 +1,151 @@
+
+<div id="forms">
+
+	<% form_for @user, :as => :user , :url => update_profile_lawyers_path, :html => { :multipart => true }  do |f| %>
+
+	<% if @user.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+		<ul>
+			<% @user.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div class="subheading">
+		Basic Information
+	</div>
+	<p>Please complete your profile, the information filled here will be visible on your profile page to all casecred clients.</p>
+	<div class="form_cont">
+		<div class="form_left">
+			<div class="field">
+				<%= f.label :first_name %>
+				<%= f.text_field :first_name %>
+				<span class="hint">&nbsp; </span>
+			</div>
+			<div class="field">
+				<%= f.label :last_name %>
+				<%= f.text_field :last_name %>
+			</div>
+			<div class="field" id="gender">
+				<%= f.label :sex  %>
+				<%= radio_button("user", "sex", "male")  %> <span>Male</span>
+				<%= radio_button("user", "sex", "female")  %> <span>Female</span>
+			</div>
+			<%= f.fields_for :lawyer_detail do |a_d| %>
+			<div class="field">
+				<%= a_d.label :address %>
+				<%= a_d.text_field :address %>
+			</div>
+			<div class="field">
+				<%= f.label :city %>
+				<%= f.text_field :city %>
+			</div>
+			<div class="field">
+				<%= f.label :state %>
+				<%= f.text_field :state %>
+			</div>
+			<div class="field">
+				<%= f.label :zipcode %>
+				<%= f.text_field :zipcode %>
+			</div>
+
+			<div class="field">
+				<%= a_d.label :home_phone %>
+				<%= a_d.text_field :home_phone %>
+			</div>
+			<div class="field">
+				<%= a_d.label :work_phone %>
+				<%= a_d.text_field :work_phone %>
+			</div>
+		</div>
+		<div class="form_right">
+			<div class="field">
+				<%= f.label :avatar, "Profile Image" %>
+				<%= f.file_field :avatar %>
+				<span class="hint">Leave this blank, If you don''t want to change  </span>
+			</div>
+			<div class="field">
+				<%= a_d.label :office_phone %>
+				<%= a_d.text_field :office_phone %>
+			</div>
+			<div class="field">
+				<%= a_d.label :fax %>
+				<%= a_d.text_field :fax %>
+			</div>
+			<div class="field">
+				<%= a_d.label :toll_free_phone %>
+				<%= a_d.text_field :toll_free_phone %>
+			</div>
+
+			<div class="field">
+				<%= a_d.label :language %>
+				<%= a_d.text_field :language %>
+			</div>
+
+			<div class="field">
+				<%= a_d.label :website %>
+				<%= a_d.text_field :website %>
+			</div>
+			<div class="field">
+				<%= a_d.label :firm_name %>
+				<%= a_d.text_field :firm_name %>
+			</div>
+			<div class="field">
+				<%= a_d.label :firm_size %>
+				<%= a_d.text_field :firm_size %>
+			</div>
+			<div class="field">
+				<%= a_d.label :experience %>
+				<%= a_d.text_field :experience %>
+				<span class="hint">eg: 8 Years, 6 Months </span>
+			</div>
+		</div>
+	</div>
+	<div class="subheading" style="margin-top:10px;">
+		Professional Information
+	</div>
+	<div class="form_cont">
+		<div class="form_left">
+			<div class="field">
+				<%= a_d.label :description %>
+				<%= a_d.text_area :description %>
+			</div>
+			<div class="field">
+				<%= a_d.label :professional_membership %>
+				<%= a_d.text_area :professional_membership %>
+			</div>
+			<div class="field">
+				<%= a_d.label :awards %>
+				<%= a_d.text_area :awards %>
+			</div>
+		</div>
+		<div class="form_right">
+			<div class="field">
+				<%= a_d.label :education %>
+				<%= a_d.text_area :education %>
+			</div>
+			<div class="field">
+				<%= a_d.label :professional_statement %>
+				<%= a_d.text_area :professional_statement %>
+			</div>
+			<div class="field">
+				<%= a_d.label :area_served %>
+				<%= a_d.text_area :area_served %>
+			</div>
+			<% end %>
+
+		</div>
+	</div>
+
+
+	<div class="field">
+		<%= f.hidden_field :profile,:value=> 1 %>
+	</div>
+	<%= submit_tag "Save" , :class => "orange_big_button" %>
+	<% end %>
+
+</div>
+

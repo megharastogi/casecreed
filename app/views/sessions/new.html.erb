@@ -1,0 +1,28 @@
+<div id="forms">
+	<div>
+		<div class="subheading">Sign in with your
+			CaseCreed Account<span id="create_new_account"> (<%=   link_to "Don't have account? SignUp here.", select_user_type_path %>)</span></div>
+		</div>
+		<%= form_for @user, :as => :user , :url => sessions_create_path do |f| %>
+
+		<div class="field">
+			<%= f.label :email %>
+			<%= f.text_field :email %>
+		</div>
+		<div class="field">
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+		</div>
+		<div class="field text_color">
+			<%= check_box_tag "remember", '1'   %>
+			Keep me signed in |
+			<%=   link_to "Can't access your account?", new_forgot_password_path %>
+
+		</div>
+		<br/>
+		<div class="login_submit">
+			<%= submit_tag "Login" ,:class => "orange_button" %>
+		</div>
+		<% end %>
+	</div>
+

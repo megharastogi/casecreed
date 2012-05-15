@@ -1,0 +1,39 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  address: MyText
+  home_phone: MyString
+  work_phone: MyString
+  office_phone: MyString
+  fax: MyString
+  toll_free_number: MyString
+  language: MyString
+  description: MyText
+  website: MyString
+  firm_name: MyString
+  firm_size: 1
+  experience: MyString
+  professional_membership: MyText
+  latitute: MyString
+  longitude: MyString
+  awards: MyText
+  education: MyText
+
+two:
+  address: MyText
+  home_phone: MyString
+  work_phone: MyString
+  office_phone: MyString
+  fax: MyString
+  toll_free_number: MyString
+  language: MyString
+  description: MyText
+  website: MyString
+  firm_name: MyString
+  firm_size: 1
+  experience: MyString
+  professional_membership: MyText
+  latitute: MyString
+  longitude: MyString
+  awards: MyText
+  education: MyText

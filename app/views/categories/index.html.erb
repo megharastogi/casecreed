@@ -1,0 +1,45 @@
+<div class="contact_form">
+
+	<h3>Listing categories</h3>
+	<% if is_admin %>
+	<span class='new_cat'><%= link_to 'New Category', new_category_path %></span>
+	<% end %>
+	<br/>
+	<br/>
+
+	<table class="admin_table" cellspacing=0 , cellpadding=0 , width= 100%>
+		<tr>
+			<th>Primary Category</th>
+			<th>Sub Category</th>  
+		</tr>
+		<% @categories.each do |category| %>
+		<tr class="<%=cycle('even','odd')%>">
+			<td style="vertical-align:top;overflow:hidden;">
+				<span style='font-size:13px;font-weight:bold;'><%= category.name %></span>
+				<% if is_admin %>
+				<span style="float:right;">&nbsp;<%= link_to 'Delete', category, :confirm => 'Are you sure?', :method => :delete %></span>
+				<span class="parent_category_link" style="float:right;"><%= link_to 'Edit', edit_category_path(category) %> |</span>
+				<% end %>
+			</td>
+			<td>
+				<% subcats = category.sub_categories %>
+				<% subcats.each do |subcat| %>
+				<div class='sub_listing' style="overflow:hidden;margin:0 0 2px 0;">
+					<%= subcat.name %>
+					<% if is_admin %>
+					<span class="sub_category_link" style="float:right;"><%= link_to 'Edit', edit_category_path(subcat) %> |  <%= link_to 'Delete', category_path(subcat), :confirm => 'Are you sure?', :method => :delete %></span>
+
+					<% end %>
+				</div>
+				<% end %>
+			</td>  
+			<tr/>
+			<% end %>
+
+		</table>	
+	</div>	
+
+
+
+
+

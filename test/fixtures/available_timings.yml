@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  on: 2010-12-04
+  from: 2010-12-04 06:32:07
+  to: 2010-12-04 06:32:07
+
+two:
+  on: 2010-12-04
+  from: 2010-12-04 06:32:07
+  to: 2010-12-04 06:32:07

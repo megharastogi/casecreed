@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  lawyer_id: 1
+  category_id: 1
+  category_type: MyString
+  percentage: 1.5
+
+two:
+  lawyer_id: 1
+  category_id: 1
+  category_type: MyString
+  percentage: 1.5

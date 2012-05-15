@@ -1,0 +1,8 @@
+
+<div class="field">
+	<%= label_tag :category_id, "Sub Category" %>
+	<%= collection_select :lawyer_category, :category_id, @sub_categories, :id, :name,
+	{:include_blank => 'Please select one Category'}
+	%>
+</div>
+

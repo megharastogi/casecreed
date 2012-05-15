@@ -1,0 +1,70 @@
+
+<div id="forms">
+	<div class="subheading">New Available Timing</div>
+	<div id="form_left">
+		<%= form_for(@available_timing) do |f| %>
+		<% if @available_timing.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@available_timing.errors.count, "error") %> prohibited this available_timing from being saved:</h2>
+
+			<ul>
+				<% @available_timing.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+		<div class="field" id="available_timing_radio" style="overflow:hidden">
+			<span style="float:left;"><%= radio_button("available_timing", "option", "1") %></span><span style="float:left;margin:0 10px 0 4px;"> For the Day</span>
+			<span style="float:left;"><%= radio_button("available_timing", "option", "2") %></span> <span style="float:left;margin:0 10px 0 4px;">Daily</span>
+			<span style="float:left;"><%= radio_button("available_timing", "option", "3") %></span> <span style="float:left;margin:0 10px 0 4px;">Weekly</span>
+		</div>
+		<div class="field">
+			<%= f.label :date_from, "Date from" %>
+			<%= f.text_field :date_from %>
+		</div>
+
+		<div class="field" id="date_to"  style=<%='display:none;' unless @available_timing.option == '2' or @available_timing.option=='3' %> >
+			<%= f.label :date_to %>
+			<%= f.text_field :date_to %>
+		</div>
+		<div class="field"  style='display:none;' >
+			<%= label_tag "Number of Day" %>
+			<%= text_field_tag 'number_of_days' %>
+		</div>
+
+		<div class="field" id="days" style=<%='display:none;' unless @available_timing.option=='3' %>>
+			<%= label_tag "Days" %>
+			<%= check_box_tag 'available_timing[days][]', "0" %>Sunday
+			<%= check_box_tag 'available_timing[days][]', "1" %>Monday
+			<%= check_box_tag 'available_timing[days][]', "2" %>Tuesday
+			<%= check_box_tag 'available_timing[days][]', "3" %>Wednesday
+			<%= check_box_tag 'available_timing[days][]', "4" %>Thrusday
+			<%= check_box_tag 'available_timing[days][]', "5" %>Friday
+			<%= check_box_tag 'available_timing[days][]', "6" %>Saturday
+		</div>
+
+		<div class="field">
+			<%= f.label :time_from %>
+			<%= f.time_select :time_from ,  :minute_step => 15, :twelve_hour => true %>
+		</div>
+
+
+
+		<div class="field">
+			<%= f.label :time_to %>
+			<%= f.time_select :time_to, :minute_step => 15 , :twelve_hour => true	 %>
+		</div>
+		<div class="actions">
+			<%= f.submit  :class => "orange_really_a_big_button" %>
+		</div>
+		<% end %>
+		<%= link_to 'Back', available_timings_path %>
+
+	</div>
+	<div id='form_right'>
+		<h5>Specify Available Timings</h5>
+		<p>You can add your availablity for one day, multiple days or particular days of week. Your time of availability will be divided into 30 minute slots for appointments with clients.</p>
+	</div>
+</div>
+

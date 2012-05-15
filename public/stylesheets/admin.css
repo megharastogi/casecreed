@@ -1,0 +1,230 @@
+body{
+    font-size:14px;
+    color:#333;
+    font-family:arial;
+    background-color:#EBEBEC;
+}
+#other_links{
+    overflow:hidden;
+    margin:10px 0 20px;
+    font-size:12px;
+}
+#other_links a{
+    color:#636160;
+}
+#other_links ul{
+    float:right;
+}
+#other_links li{
+    float:left;
+}
+#admin_wrapper{
+    width:1000px;
+    overflow:hidden;
+    margin: 20px auto;
+}
+#header{
+  overflow:hidden;
+  margin:0 0 10px 0;
+}
+#header #logo{
+  float:left;
+}
+h3{
+    font-size:20px;
+    margin:0 0 10px 0;
+}
+
+#admin_navigation{
+    overflow:hidden;
+}
+
+#admin_navigation ul{
+    overflow:hidden;
+    height:30px;
+    margin:0 0 30px;
+}
+#admin_navigation li{
+    float:left;
+    margin:0 1px;
+    padding:4px 0 0;
+}
+#admin_navigation li a{
+    background-color:#636160;
+    color:#FFFFFF;
+    font-size:15px;
+    padding:7px;
+    text-decoration:none;
+}
+.admin_form{
+   margin:20px 0;
+    overflow:hidden;
+}
+.admin_form label{
+    display:block;
+    margin: 0 0 5px 0;
+}
+.admin_form .field{
+  margin:0 0 15px 0;
+}
+.admin_form p{
+    margin:10px 0;
+}
+.admin_form input[type=text],.admin_form input[type=password]{
+   border:1px solid #ccc;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  padding:5px 5px;
+  margin:4px 0 0 0;
+  width:250px;
+}
+.admin_table{
+    background-color:#fff;
+    border:1px solid #ababab;
+    font-size:12px;
+}
+.admin_table th{
+    font-weight:bold;
+    padding:5px;
+    background-color:#ccc;
+    border-bottom:1px solid #ababab;
+    border-right:1px solid #ababab;
+}
+.admin_table td{
+    padding:5px;
+    border-bottom:1px solid #ababab;
+    border-right:1px solid #ababab;
+}
+.admin_table td a{
+  color:#636160;
+
+}
+.admin_table tr.odd td{
+  background-color:#F5FCFE;
+}
+#flash{
+    background-color:#fcfaf2;
+    border:2px solid #EFE7CA;
+    padding:5px 10px;
+    margin:0 0 20px;
+    opacity:1;
+}
+#errorExplanation{
+    background-color:#F4DACF;
+    border:2px solid #D68B8B;
+    padding:10px;
+}
+#errorExplanation h2{
+    text-decoration:underline;
+}
+#errorExplanation p{
+    font-size:13px;
+    margin:5px 0;
+}
+#errorExplanation ul{
+    list-style:disc inside none;
+    font-size:12px;
+}
+#errorExplanation ul li{
+    margin:2px 0;
+}
+#image_errors{
+    background-color:#FCE9E9;
+      border:2px solid #D79696;
+      padding:5px 10px;
+      margin:10px 0;
+        font-size:11px;
+        width:400px;
+}
+.new_cat a{
+  color:#433F3D;
+  text-decoration:underline;
+}
+.admin_form .field_with_errors input[type=text],.admin_form .field_with_errors input[type=password],.admin_form .field_with_errors textarea{
+  border:1px solid #733434;
+}
+#error_explanation {
+  width:500px;
+  border: 1px solid #733434;
+  padding: 7px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  background-color: #F4D9D9;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  color: #632E2E;
+}
+#error_explanation ul{
+  padding:0 0 0 10px;
+}
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: inside disc;
+}
+#error{
+  background:none repeat scroll 0 0 #F4D9D9;
+  border:1px solid #733434;
+  color:#481212;
+  margin:20px;
+  padding:10px;
+  text-align:center;
+}
+#notice{
+  background:none repeat scroll 0 0 #E5F7CD;
+  border:1px solid green;
+  color:green;
+  margin:20px;
+  padding:10px;
+  text-align:center;
+}
+
+
+#forms{
+  margin:20px;
+  overflow:hidden;
+}
+#create_new_account {
+font-size:12px;
+font-weight:normal;
+}
+#forms label {
+display:block;
+color:#001E2B;
+}
+#forms p{
+  margin:10px 0;
+}
+#forms h1{
+  font-size:20px;
+  font-family:helvetica;
+  font-weight:bold;
+  margin:15px 0;
+}
+#forms input{
+  font-size:13px;
+}
+#forms input[type=text],#forms input[type=password]{
+  border:1px solid #ccc;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+padding:5px 5px;
+margin:4px 0 0 0;
+width:250px;
+}
+
+
+.hint{
+color:#001E2B;
+  font-size:10px;
+  display:block;
+  text-align:right;
+  width:260px;
+}
+

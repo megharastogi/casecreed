@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Case creed</title>
+	<meta name="google-site-verification" content="rwzOEiBTmsMEaJ-G14n9oaVHuLicGn8DNPKo4p02zpI" />
+	<%= stylesheet_link_tag 'reset','jquery.wysiwyg','jquery.fancybox-1.3.4','jquery-ui-1.8.5.custom','style' %>
+	<%= javascript_include_tag('jquery-1.4.2.min') %>
+	<%= javascript_include_tag('jquery.fancybox-1.3.4.pack') %>
+	<%= javascript_include_tag('jquery.mousewheel-3.0.4.pack') %>
+	<%= javascript_include_tag('jquery.rails') %>
+	<%= javascript_include_tag('jquery-ui-1.8.7.custom.min') %>
+	<%= javascript_include_tag('jquery.ui.datepicker') %>
+	<%= javascript_include_tag('application') %>
+	<%= javascript_include_tag('jquery.wysiwyg') %>
+	<%= javascript_include_tag('wysiwyg.image') %>
+	<%= javascript_include_tag('wysiwyg.table') %>
+
+	<meta name="keywords" content="legal access 24/7, Find a lawyer in Atlanta, charges for dui, is dui felony, dui second offense, juvie jail, felony expungement, Atlanta criminal defense attorneys,Atlanta criminal lawyers,Georgia criminal attorney,Georgia criminal defense lawyers,Georgia criminal defense,Atlanta criminal charge,Georgia criminal defense law firm,criminal defense attorneys,criminal lawyers,Georgia drunk driving defense lawyers,drunk driving defense lawyer,Default,Car Accident,Criminal,Employment,Social Security Disability,Bankruptcy,Divorce,Medical Malpractice,Wills and Trusts,Driving DUI/DWI),Personal Injury,Wrongful Death,Corporation and Partnership,Health and Hospitalization,Auto/Trucking,Accident,Appeals,Arbitration,Banking,Environment,Government,Insurance,Patent,Taxation,Trademark,Civil Law,Civil Rights,Corporate Business,Criminal Justice,Estate Planning,Family Law,Labor Relations,Litigation/trial,Medicare-medicaid,Multiple locations,Product Liability,Real Estate,Social Security,Anti-Trust Licensing,Divorce Assistance,Estate management services,Estate planning services,Medical Legal Consultants,Paralegals,Probate Service,Social Security Counslers And Reps,Associate Member,Attorney,Copyright,Firm Member,Insurance Book,Labor Relations Book,Mutiple Locations,Social Security Book,Trial ,Immigration Law,Drug Crimes,Juvenile Crimes,DUI Defense,Sex Crimes,Felonies/Misdemeanors,Federal Crimes,Murder/Manslaughter,White Collar Crimes,Forgery and Fraud,Sex Crimes,Violent Crimes,Assault and Battery,Weapons Charges,Theft Crimes,Arson Charges,Kidnapping,Domestic Violence,Probation and Parole,Stalking Defense,Computer and Internet,Bond and Bail Hearings,Non-Violent Crimes,Warrant Hearings,Traffic Citations,General"> 
+	    <meta name="description" content="A site for people looking to find lawyers in Atlanta for the purpose of resolving criminal issues, divorce, personal injury,  Dui, tax lawyers,federal crimes, etc.  Atlanta criminal defense attorneys,Atlanta criminal lawyers,Georgia criminal attorney,Georgia criminal defense lawyers,Georgia criminal defense,Atlanta criminal charge,Georgia criminal defense law firm,criminal defense attorneys,criminal lawyers,Georgia drunk driving defense lawyers,drunk driving defense lawyer.">
+</head>
+<body>
+	<div id="top_header">&nbsp;</div>
+	<div id="wrapper">
+		<div id="header">
+			<div id="logo">
+				<%= link_to (image_tag "logo.png") , root_path %>
+			</div>
+
+
+			<div id="login_links">
+				<div id="signup">
+					<% unless session.has_key?("user_id") %>
+					<%= link_to "Sign in", login_path %> &nbsp;|&nbsp; <%= link_to "Register", select_user_type_path %>
+					<% else %>
+					<%= @user.full_name %>&nbsp;|&nbsp;
+					<% if session[:account_type]=="user"%>
+					<%= link_to "My Account", user_path(@user) %>&nbsp;|&nbsp;
+					<% elsif session[:account_type]=="lawyer" %>
+					<%= link_to "My Account", lawyer_path(@user) %> &nbsp;|&nbsp;
+					<% end %>
+					<% end %>
+					<% unless session[:user_id].nil? %>
+					<%= link_to "Logout", logout_path %>
+					<% end %>
+				</div>
+				<div id="city_links" style="padding:9px 0 0 0;text-align:right;">
+					Cities: <a href="#">Atlanta</a>
+				</div>
+			</div>
+			<div id='vote_for_next'>
+				<%= link_to 'Vote for the Next City', new_vote_for_next_city_path%>
+
+			</div>
+			<div id="sms_links">
+				<% if session.has_key?("user_id") %>
+				<% if @user.sm.nil? and @user.sms_number.nil? %>
+				<%= link_to "Activate sms notifications", settings_users_path %>
+				<% elsif !@user.sm.nil? %>
+				<%= link_to "Please verify your phone number", settings_users_path %>
+				<% end %>
+				<% end %>
+			</div>
+		</div>
+
+		<div class="content">
+			<% if flash[:notice] %>
+			<div id='notice'>	<%= flash[:notice].html_safe %></div>
+			<% end %>
+			<% if flash[:error] %>
+			<div id='error'><%= flash[:error].html_safe %></div>
+			<% end %>
+			<%= render :partial => "layouts/header" %>
+			<%= yield %>
+		</div>
+		<div id="footer">
+			<p>Company Information : <%= link_to "About Us", pages_about_us_path %> | <%= link_to "Contact Us", new_message_path %>  | <a href="http://blog.casecreed.com">Case Creed Blog</a> | <%= link_to "Press Kit", pages_presskit_path %></p>
+			<p>
+				Legal :  <%= link_to "Privacy Policy", pages_privacy_policy_path %> | <%= link_to "Terms of Use", pages_terms_of_use_path %>
+			</p>
+		</div>
+	</div>
+	<div id="bottom_header">&nbsp;</div>
+
+</body>
+</html>
+

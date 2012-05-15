@@ -1,0 +1,33 @@
+<%= form_for(@sm) do |f| %>
+<% if @sm.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@sm.errors.count, "error") %> prohibited this sm from being saved:</h2>
+
+	<ul>
+		<% @sm.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div class="field">
+	<%= f.label :phone_number %><br />
+	<%= f.text_field :phone_number %>
+</div>
+<div class="field">
+	<%= f.label :verification_code %><br />
+	<%= f.text_field :verification_code %>
+</div>
+<div class="field">
+	<%= f.label :verified %><br />
+	<%= f.text_field :verified %>
+</div>
+<div class="field">
+	<%= f.label :user_id %><br />
+	<%= f.text_field :user_id %>
+</div>
+<div class="actions">
+	<%= f.submit %>
+</div>
+<% end %>

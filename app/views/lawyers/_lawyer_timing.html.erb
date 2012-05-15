@@ -1,0 +1,35 @@
+<table id="only_timings">
+	<span onclick="get_timings_lawyer_show_page('<%= @date - 7 %>', '<%= @lawyer.id %>')" id="previous_button"> Previous</span>
+	<span  onclick="get_timings_lawyer_show_page('<%= @date + 7 %>', '<%= @lawyer.id %>')" id="next_button"> Next</span>
+	<tr>
+
+		<% i = 0%>
+		<% while i<7 %>
+			<th class="day ">
+				<%= (@date + i).strftime("%A") %><span><%= @date + i %></span></th>
+				<% i = i+1 %>
+				<% end %>
+			</tr>
+
+			<tr>
+				<% if @lawyer.active == 1 %>
+				<% i = 0%>
+				<% while i<7 %>
+					<td class="listing <%= cycle('day','day day_color')%>">
+						<% unless @lawyer.available_timings.find_by_date_on( @date + i ).nil?%>
+						<% @lawyer.available_timings.find_by_date_on( @date + i ).slots.active_slots.each do |slot| %>
+						<%= link_to slot.start_time.strftime("%I.%M %p"), new_appointment_path(:slot=>slot.id) %><br/>
+						<% end %>
+						<% end %>
+					</td>
+					<% i= i+1 %>
+					<% end %>
+					<% else %>
+					<td colspan=7 class="not_avaiable">
+						<p><%= @lawyer.full_name%> has no appointments available on CaseCreed</p>
+					</td>
+
+					<% end %>  
+				</tr>
+			</table>
+

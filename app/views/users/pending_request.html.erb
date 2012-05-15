@@ -1,0 +1,27 @@
+<h3>List of Pending Requests</h3>
+<table class="admin_table" cellspacing=0 , cellpadding=0 , width= 100%>
+	<tr>
+		<th>Name</th>
+		<th>Email</th>  
+		<th>Actions</th>
+	</tr>
+	<%= form_tag(authenticate_requests_users_path) do %>
+	<% @users.each do |user| %>
+	<tr class="even">
+		<td><%= user.full_name %></td>
+		<td><%= user.email %></td>
+		<td><%= check_box_tag 'select[]', user.id %></td>
+	</tr>
+	<% end %>
+	<tr>
+		<td colspan=2 align="right">
+			<%= submit_tag "Approve" %> 
+		</td>
+		<td>	
+			<%= submit_tag "Reject" %>
+		</td>
+	</tr>	
+	<% end %>
+</table>    
+
+<div>	<%= will_paginate @users  %></div>

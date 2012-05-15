@@ -1,0 +1,29 @@
+
+<div id="lawyer_show">
+	<div class ="subheading" style="margin-bottom:15px;">Listing Images</div>
+	<p>You can create your image gallery.</p>
+	<br/>
+	<div class="image_listing">
+	<% @images.each do |image| %>
+	<div class="list_img">
+		<div class="image_block">
+			<%= link_to image_tag(image.avatar.url(:thumb)), image.avatar.url(:large), :title=>image.title,:rel =>"pop_up" %>
+		</div>
+		<p>
+			<%= image.description %>
+		</p>
+		<p>
+			<%= link_to 'Edit', edit_image_path(image) %>
+			<%= link_to 'Destroy', image, :confirm => 'Are you sure?', :method => :delete %>
+		</p>
+	</div>
+	<% end %>
+
+</div>
+<br />
+
+<%= link_to 'New Image', new_image_path , :class => "orange_big_button" %>
+
+
+</div>
+

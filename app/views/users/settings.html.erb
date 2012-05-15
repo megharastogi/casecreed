@@ -1,0 +1,12 @@
+
+<div id="lawyer_show">
+
+<% unless session[:account_type]=="user" and @user.sms_number.nil? %>
+	<%= render :partial => "users/change_password" %>
+	<% end %>
+
+</div>
+<% unless @user.account_type=="admin" %>
+	<%= render :partial => "users/sms_settings" %>
+	<% end %>
+

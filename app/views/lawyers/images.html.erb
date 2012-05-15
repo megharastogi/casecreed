@@ -1,0 +1,128 @@
+
+<% unless @lawyer.lawyer_detail.nil? or @lawyer.lawyer_detail.latitude.nil? %>
+<script type="text/javascript"
+src="http://maps.google.com/maps/api/js?sensor=false">
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var myLatlng = new google.maps.LatLng(<%= @lawyer.lawyer_detail.latitude %>, <%= @lawyer.lawyer_detail.longitude %>);
+	var myOptions = {
+		zoom: 12,
+		center: myLatlng,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	}
+	var map = new google.maps.Map(document.getElementById("lawyer_location"), myOptions);
+
+	var image = '/images/flag.png';
+	var myLatLng = new google.maps.LatLng(<%= @lawyer.lawyer_detail.latitude %>, <%= @lawyer.lawyer_detail.longitude %>);
+	var beachMarker = new google.maps.Marker({
+		position: myLatLng,
+		map: map,
+		icon: image
+	})
+
+});
+</script>
+<% else %>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$("#lawyer_location").html("Location not available");
+	$("#lawyer_location").addClass("location_not_available");
+
+});
+</script>
+<% end %>
+
+<div id="lawyer_show">
+	<div id='top_show_block'>
+		<div id="lawyer_img">
+			<%= image_tag @lawyer.avatar.url(:thumb) %>
+			<br/>
+
+		</div>
+		<div id="lawyer_show_info">
+			<div id="lawyer_name_show"><%= link_to @lawyer.full_name, lawyer_path(@lawyer) %></div>
+			<div id="block_left">
+				<div id="address_show" class="info_block">
+					<p class="show_heading">Address:</p>
+					<p>
+						<%= @lawyer.lawyer_detail.address unless @lawyer.lawyer_detail.nil? %>
+					</p>
+					<p>
+						<%= @lawyer.city %>
+					</p>
+					<p>
+						<%= @lawyer.state %>
+					</p>
+				</div>
+				<div id="gender_show" class="info_block">
+					<p><span style="font-weight:bold;font-size:12px;">Gender:</span> <%= @lawyer.sex.humanize unless @lawyer.sex.nil?%></p>
+				</div>
+				<div id="website_show" class="info_block">
+					<p class="show_heading">Website:</p>
+					<p><%= link_to @lawyer.lawyer_detail.website, @lawyer.lawyer_detail.website unless @lawyer.lawyer_detail.nil? %></p>
+				</div>
+				<div id="website_show" class="info_block">
+					<p class="show_heading">Company Name:</p>
+					<p><%= @lawyer.lawyer_detail.firm_name unless @lawyer.lawyer_detail.nil? %></p>
+				</div>
+
+				<div id="rating_show" class="info_block">
+					<p class="show_heading">Rating:</p>
+					<% if @lawyer.lawyer_detail.nil? or @lawyer.lawyer_detail.rating == 0.0 %>
+					<p class=''>No Recommendation so far</p>
+					<% else %>
+					<%=image_tag(half_round(@lawyer.lawyer_detail.rating)+".png")%>
+					<!-- <p class='<%#= half_round(@lawyer.lawyer_detail.rating) %>'>Average Recommendation </p> -->
+					<% end %>
+				</div>
+			</div>
+			<div id="block_right">
+				<div id="special_show" class="info_block">
+					<p class="show_heading">Specialties:</p>
+					<p>
+						<%= link_to "add specialilities", new_lawyer_speciality_path(@lawyer)  if @lawyer.id == session[:user_id]%>
+						<% chart_number = ""  %>
+						<% chart_variables = ""  %>
+						<% @user_categories.each_with_index do |user_category,index| %>
+						<%= user_category.category.name %><br/>
+
+						<% chart_number +=  user_category.percentage.to_s %>
+						<% chart_variables +=  user_category.category.name %>
+						<% chart_number +=  ',' unless index==@user_categories.count - 1 %>
+						<% chart_variables +=  '|' unless index == @user_categories.count- 1 %>
+						<% end %>
+					</p>
+					<% unless  chart_number == "" %>
+						<%=image_tag('https://chart.googleapis.com/chart?cht=p3&chs=350x130&chd=t:' + chart_number + '&chl=' + chart_variables )%>
+						<% else %>
+						No specilities specified
+						<% end %>
+
+					</div>
+				</div>
+			</div>
+			<div id="lawyer_location">
+
+			</div>
+		</div>
+		<div class ="subheading" style="margin-bottom:15px;"><%= @lawyer.full_name %> Images</div>
+		<br/>
+		<div class="image_listing">
+		<% @images.each do |image| %>
+		<div class="list_img">
+			<div class="image_block">
+				<%= link_to image_tag(image.avatar.url(:thumb)), image.avatar.url(:large), :title=>image.title,:rel =>"pop_up" %>
+			</div>
+			<p>
+				<%= image.description %>
+			</p>
+
+		</div>
+		<% end %>
+
+	</div>
+</div>
+

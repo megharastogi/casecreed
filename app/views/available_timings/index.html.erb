@@ -1,0 +1,32 @@
+
+
+<div id="lawyer_show">
+	<div class="subheading">Listing Available Timings</div>
+	<p>Add your availabity so that clients can book appointment with you online. </p>
+	<br/>
+	<%= link_to 'New Available Timing', new_available_timing_path ,:class => "orange_really_big_button" %>
+	<table id="index_page">
+		<tr>
+			<th>Date On</th>
+			<th>Time From</th>
+			<th>Time To</th>
+			<th></th>
+			<th></th>
+		</tr>
+
+		<% @available_timings.each do |available_timing| %>
+		<tr class="<%= cycle("even", "odd") -%>">
+			<td><%= available_timing.date_on.strftime("%m/%d/%Y") %></td>
+			<td><%= available_timing.time_from.strftime("%I.%M %p")  %></td>
+			<td><%= available_timing.time_to.strftime("%I.%M %p")  %></td>
+			<td><%= link_to 'Show', available_timing %></td>
+			<td><%= link_to 'Delete', available_timing, :confirm => 'All you appointments will be canceled. Do you really want to delete?', :method => :delete %></td>
+		</tr>
+		<% end %>
+	</table>
+
+	<br />
+	<div>	<%= will_paginate @available_timings  %></div>
+
+</div>
+

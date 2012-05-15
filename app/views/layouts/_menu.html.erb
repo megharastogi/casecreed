@@ -1,0 +1,62 @@
+<%if session[:account_type]=="lawyer" %>
+
+<ul id="cssdropdown">
+	<li class="headlink">
+		<%if session[:account_type]=="lawyer" %>
+		<%= link_to "My Account", lawyer_path(@user) %>
+		<% elsif session[:account_type]=="user"%>
+		<%= link_to "My Account", lawyer_path(@lawyer) %>
+		<% end %>
+	</li>
+	<li class="headlink  <%= "active_headlink" if params[:controller] == "appointments" %>">
+		<%= link_to "My Appointments", appointments_path %>
+	</li>
+
+	<li class="headlink <%= "active_headlink" if (params[:controller] == "lawyers" and params[:action]=="clients") or (params[:controller]=="users" and params[:action]=="show") %>">
+		<%if session[:account_type]=="lawyer" %>
+		<%= link_to "My Clients", clients_lawyer_path(@user) %>
+		<% elsif session[:account_type]=="user"%>
+		<%= link_to "My Clients", clients_lawyer_path(@lawyer) %>
+		<% end %>
+
+	</li>
+
+	<li class="headlink <%= "active_headlink" if params[:controller] == "available_timings" %>">
+		<%= link_to "My Available Timings", available_timings_path %>
+	</li>
+	<li class="headlink <%= "active_headlink" if params[:controller] == "images" %>" >
+		<%= link_to "My Photos", images_path %>
+	</li>
+	<li class="headlink <%= "active_headlink" if params[:controller] == "users" and (params[:action]=="settings" or params[:action]=="update_password")%>" id="lastchild">
+		<%= link_to "Settings", settings_users_path %>
+	</li>
+</ul>
+<% elsif session[:account_type]=="user"%>
+<ul id="cssdropdown">
+	<li class="headlink">
+		<%if session[:account_type]=="lawyer" %>
+		<%= link_to "My Account", user_path(@client) %>
+		<% elsif session[:account_type]=="user"%>
+		<%= link_to "My Account", user_path(@user) %>
+		<% end %>
+	</li>
+	<li class="headlink  <%= "active_headlink" if params[:controller] == "lawyers" %>">
+		<%= link_to "Lawyers", lawyers_path %>
+	</li>
+	<li class="headlink  <%= "active_headlink" if params[:controller] == "appointments" %>">
+		<%= link_to "My Appointments", appointments_path %>
+	</li>
+
+	<li class="headlink <%= "active_headlink" if params[:controller] == "users" and (params[:action]=="lawyers") %>" >
+	<%if session[:account_type]=="lawyer" %>
+	<%= link_to "My Lawyers", lawyers_user_path(@client) %>
+	<% elsif session[:account_type]=="user"%>
+	<%= link_to "My Lawyers", lawyers_user_path(@user) %>
+	<% end %>
+</li>
+<li class="headlink <%= "active_headlink" if params[:controller] == "users" and (params[:action]=="settings" or params[:action]=="update_password")%>" id="lastchild">
+	<%= link_to "Settings", settings_users_path %>
+</li>
+</ul>
+<% end %>
+

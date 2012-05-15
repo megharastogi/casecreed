@@ -1,0 +1,70 @@
+<div id="forms">
+	<div class="subheading">Create an Account </div>
+	<p id="new_sign_up">
+		If you already have an Account, you can sign in <%= link_to 'here', login_path %>.
+
+		<br/>Required information for Casecreed account
+		<div id="form_left">
+			<%= form_for(@user) do |f| %>
+			<% if @user.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+				<ul>
+					<% @user.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
+
+			<div class="field">
+				<%= f.label :first_name %>
+				<%= f.text_field :first_name %>
+			</div>
+			<div class="field">
+				<%= f.label :last_name %>
+				<%= f.text_field :last_name %>
+			</div>
+			<div class="field">
+				<%= f.label :email %>
+				<%= f.text_field :email %>
+				<span class="hint">e.g. myname@example.com  </span>
+			</div>
+			<div class='field'>
+				<%= f.label :password, 'Password' %>
+				<%= f.password_field :password, :size => 20 %>
+				<span class="hint">(Longer than 6 characters and not easy to guess)</span>
+			</div>
+			<div class='field'>
+				<%= f.label :password_confirmation, 'Confirm Password' %>
+				<%= f.password_field :password_confirmation, :size => 20 %>
+				<span class="hint">(same as above)</span>
+			</div>
+			<div>
+				<%= f.label :phone_number %>
+				<%= f.text_field :phone_number %>
+				<span class="hint">Please enter your 10 digit phone number, e.g. 1234567890</span>
+<span class="hint" style="color:blue;"">We do not share your information with third parties, and we respect your privacy. </span>
+			</div>
+			<div class="field">
+				<%= f.label :phone_carrier %>
+				<%= carrier_select %>
+			</div>
+			<div class='field' id="terms_condition">
+				<%= f.check_box :terms %>
+				By clicking on 'Create my account' below you are agreeing to the <%= link_to "Terms of Service" , pages_terms_of_use_path %>  and the <%= link_to "Privacy Policy" , pages_privacy_policy_path %>.
+			</div>
+
+
+			<div class="actions">
+				<%= f.submit "Create my account" ,:class=> "orange_really_big_button" %>
+			</div>
+			<% end %>
+		</div>
+		<div id="form_right">
+			<h5>Benefits of CaseCreed?</h5>
+			<p>Real time access to appointments around the clock, anywhere, anytime, no waiting for office to open.Sync appointments with email client and get sms follow ups.Check out the review and choose your lawyer, No phone tag or hold book your appointment and be done!</p>
+		</div>
+	</div>
+

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  phone_number: MyString
+  verification_code: MyString
+  verified: 1
+  user_id: 1
+
+two:
+  phone_number: MyString
+  verification_code: MyString
+  verified: 1
+  user_id: 1

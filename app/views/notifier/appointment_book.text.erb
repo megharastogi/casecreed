@@ -1,0 +1,10 @@
+Hello <%= @recipient.full_name %>
+
+Your appointment dated <%= @appointment.slot.date_on.strftime("%m/%d/%Y").to_s %> at <%= @appointment.slot.start_time.strftime("%I.%M %p").to_s %> to <%= @appointment.slot.end_time.strftime("%I.%M %p").to_s %> has been booked.
+
+Thank you for using CaseCreed.
+The Casecreed Team
+
+This is a post-only mailing.  Replies to this message are not monitored
+or answered.
+

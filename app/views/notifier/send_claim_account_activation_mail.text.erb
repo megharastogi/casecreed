@@ -1,0 +1,14 @@
+Hi <%= @recipient.full_name %>,
+
+Your request has been accepted.
+Your temp password is <%=  @password %>
+
+To complete the sign-up process, please follow this link:
+<%= url_for(account_activate_users_url(:act=>@recipient.activation_code)) %>
+
+Welcome to Casecreed!
+The Casecreed Team
+
+This is a post-only mailing.  Replies to this message are not monitored
+or answered.
+

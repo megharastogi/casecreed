@@ -1,0 +1,21 @@
+
+<div id="lawyer_show">
+	<div class="subheading">My Lawyers List</div>
+	<p>This is a list of all lawyers you have on Casecreed.</p>
+	<table id="index_page">
+		<tr>
+			<th>Lawyer Name</th>
+			<th>Profile</th>
+
+		</tr>
+
+		<% @lawyers.each do |x| %>
+		<tr class="<%= cycle("even", "odd") -%>">
+			<td><%= x.lawyer.full_name %></td>
+			<td><%= link_to 'View Profile', lawyer_path(x.lawyer) %></td>
+		</tr>
+		<% end %>
+	</table>
+
+</div>
+

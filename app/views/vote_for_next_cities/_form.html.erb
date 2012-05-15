@@ -1,0 +1,42 @@
+<div id="forms">
+	<div class="subheading">Vote for Next City </div>
+	<p>Casecreed is growing and soon we will be in your city. To help us decide, please vote for the city you want casecreed should go next.</p>
+	<%= form_for(@vote_for_next_city) do |f| %>
+	<% if @vote_for_next_city.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@vote_for_next_city.errors.count, "error") %> prohibited this vote_for_next_city from being saved:</h2>
+
+		<ul>
+			<% @vote_for_next_city.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+	<div class="field">
+		<%= f.label :first_name %>
+		<%= f.text_field :first_name %>
+	</div>
+	<div class="field">
+		<%= f.label :last_name %>
+		<%= f.text_field :last_name %>
+	</div>
+	<div class="field">
+		<%= f.label :city %>
+		<%= f.text_field :city %>
+	</div>
+	<div class="field">
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+	</div>
+	<div class="field">
+		<%= f.label :comment %>
+		<%= f.text_area :comment %>
+	</div>
+	<div class="actions">
+		<%= f.submit 'Vote', :class=> "orange_really_big_button" %>
+	</div>
+	<% end %>
+</div>
+

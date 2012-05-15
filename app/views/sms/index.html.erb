@@ -1,0 +1,29 @@
+<h1>Listing sms</h1>
+
+<table>
+  <tr>
+    <th>Phone number</th>
+    <th>Verification code</th>
+    <th>Verified</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sms.each do |sm| %>
+  <tr>
+    <td><%= sm.phone_number %></td>
+    <td><%= sm.verification_code %></td>
+    <td><%= sm.verified %></td>
+    <td><%= sm.user_id %></td>
+    <td><%= link_to 'Show', sm %></td>
+    <td><%= link_to 'Edit', edit_sm_path(sm) %></td>
+    <td><%= link_to 'Destroy', sm, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sm', new_sm_path %>

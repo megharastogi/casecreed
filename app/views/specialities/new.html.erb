@@ -1,0 +1,79 @@
+
+
+
+<div id="lawyer_show">
+<div class="subheading">Listing Specilities</div>
+  <p>This is a list of your current specialities.</p>
+<table id="index_page" style="float:left;">
+  <tr>
+    <th>Category </th>
+    <th>Percentage</th>
+<th></th>
+  </tr>
+<% chart_number = ""  %>
+<% chart_variables = ""  %>
+<% @user_categories.each_with_index do |user_category,index| %>
+  <tr class="<%= cycle("even", "odd") -%>">
+    <td><%= user_category.category.name %></td>
+    <td><%= user_category.percentage  %></td>
+   <% chart_number +=  user_category.percentage.to_s %>
+          <% chart_variables +=  user_category.category.name %>
+<% chart_number +=  ',' unless index==@user_categories.count - 1 %>
+          <% chart_variables +=  '|' unless index == @user_categories.count- 1 %>
+    <td><%= link_to 'Delete', lawyer_speciality_path(@user, user_category), :confirm => 'This will delete all the slots and cancel all the appoinments. We suggest to delete only free slots. Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<div id="specialities_pie_chart">
+  <p class="subheading">Specialties:</p>
+  <% unless  chart_number == "" %>
+  <%=image_tag('https://chart.googleapis.com/chart?cht=p3&chs=350x150&chd=t:' + chart_number + '&chl=' + chart_variables )%>
+  <% else %>
+  No specilities specified
+  <% end %>
+</div>
+</div>
+
+
+<div id="forms">
+<div class="subheading">New Specility</div>
+<p>Add a new speciality.</p>
+<br/>
+<% form_for [@user, @lawyer_category], :url=> lawyer_specialities_path(@user)  do |f| %>
+
+<% if @lawyer_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lawyer_category.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% @lawyer_category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="field">
+	 <%= label_tag "Parent Category" %>
+	<%= collection_select :lawyer_category, :parent_category, Category.parent_categories, :id, :name,
+	  {:include_blank => 'Please select one Category'}
+	 %>
+  </div>
+  <div class="field" id="subcategory">
+    <%= f.label :category_id, "Sub Category" %>
+   <%= collection_select :lawyer_category, :category_id, @sub_categories, :id, :name,
+	  {:include_blank => 'Please select one Category'}
+	 %>
+  </div>
+
+ <div class="field">
+    <%= f.label :percentage %>
+    <%= f.text_field :percentage %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create Category",:class => "orange_really_big_button"%>
+  </div>
+
+<% end %>
+</div>
+

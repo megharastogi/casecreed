@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  lawyer_id: 1
+  client_id: 1
+  status: 1
+
+two:
+  lawyer_id: 1
+  client_id: 1
+  status: 1

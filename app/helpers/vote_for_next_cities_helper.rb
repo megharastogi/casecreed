@@ -1,0 +1,2 @@
+module VoteForNextCitiesHelper
+end

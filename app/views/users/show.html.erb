@@ -1,0 +1,32 @@
+<div id="user_show">
+
+	<br/>
+	<div id="lawyer_show">
+		<div id='top_show_block'>
+			<div id="lawyer_img">
+				<%= image_tag @client.avatar.url(:thumb) %>
+				<br/>
+				<% if @client.id == session[:user_id]%>
+				<%= link_to "edit", edit_user_path(@client),:class=>"orange_button" %>
+				<% end %>
+			</div>
+
+			<div id="lawyer_show_info">
+				<div id="lawyer_name_show"><%= @client.full_name %></div>
+				<div id="block_left">
+					<div id="address_show" class="info_block">
+						<p class="show_heading">Address:</p>
+						<p>
+							<%= @client.client_detail.address unless @client.client_detail.nil? %><br/>
+							<%= @client.city %> - <%= @client.zipcode %><br/>
+							<%= @client.state %>
+						</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+

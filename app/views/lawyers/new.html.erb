@@ -1,0 +1,122 @@
+<script>
+$(function() {
+	$( "#tabs" ).tabs();
+});
+</script>
+<div id="lawyer_Signup">
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">Sign Up Now</a></li>
+			<li><a href="#tabs-2">How It Works</a></li>
+			<li><a href="#tabs-3">See New Clients</a></li>
+			<li><a href="#tabs-4">Retain Existing Clients</a></li>
+			<li><a href="#tabs-5">Covert Your Web Traffic</a></li>
+
+		</ul>
+		<div id="tabs-1">
+			<div id="forms">
+				<div class="subheading">Create an Account </div>
+				<p id="new_sign_up_lawyer">
+
+					<%= link_to 'Already have an Account? Sign in here.', login_path  ,:id => "already_member"%>
+					<span id="lawyer_or">OR</span>
+					<%= link_to 'Search and Claim your Profile here.',  search_accounts_path  ,:id => "claim_member"%>
+
+					<!-- If you already have an Account, you can sign in <%#= link_to 'here', login_path %>.
+
+						<br/>Required information for Casecreed account
+						<br/> For lawyers please search your details <%#= link_to 'here', search_accounts_path %>. --></p>
+						<div id="form_left">
+							<%= form_for @user, :url => lawyers_path do |f| %>
+							<% if @user.errors.any? %>
+							<div id="error_explanation">
+								<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+								<ul>
+									<% @user.errors.full_messages.each do |msg| %>
+									<li><%= msg %></li>
+									<% end %>
+								</ul>
+							</div>
+							<% end %>
+
+							<div class="field">
+								<%= f.label :first_name %>
+								<%= f.text_field :first_name %>
+							</div>
+							<div class="field">
+								<%= f.label :last_name %>
+								<%= f.text_field :last_name %>
+							</div>
+							<div class="field">
+								<%= f.label :email %>
+								<%= f.text_field :email %>
+								<span class="hint">e.g. myname@example.com  </span>
+							</div>
+
+							<div class='field'>
+								<%= f.label :password, 'Password' %>
+								<%= f.password_field :password, :size => 20 %>
+								<span class="hint">(Longer than 6 characters and not easy to guess)</span>
+							</div>
+							<div class='field'>
+								<%= f.label :password_confirmation, 'Confirm Password' %>
+								<%= f.password_field :password_confirmation, :size => 20 %>
+								<span class="hint">(same as above)</span>
+							</div>
+							<div class="field">
+								<%= f.label :phone_number %>
+								<%= f.text_field :phone_number %>
+								<span class="hint">Please enter your 10 digit phone number, e.g. 1234567890</span><span class="hint" style="color:blue;"">We do not share your information with third parties, and we respect your privacy. </span>        </div>
+								<div class="field">
+									<%= f.label :phone_carrier %>
+									<%= carrier_select %>
+								</div>
+								<div class='field' id="terms_condition">
+									<%= f.check_box :terms %>
+									By clicking on 'Create my account' below you are agreeing to the <%= link_to "Terms of Service" , pages_terms_of_use_path %>  and the <%= link_to "Privacy Policy" , pages_privacy_policy_path %>.
+								</div>
+
+
+								<div class="actions">
+									<%= f.submit "Create my account" ,:class=> "orange_really_big_button" %>
+								</div>
+								<% end %>
+							</div>
+							<div id="form_right">
+								<h5>Benefits of  CaseCreed?</h5>
+								<p>
+									Door open 24/7,35% of appointments book outside of business hrs, Focus on practice while clients book their own appointments without interrupting your assistant collaborate with clients using automated messaging system, complete cms to reduce no-show, no phone tag and improve client retention.
+
+								</p>
+							</div>
+						</div>
+					</div>
+					<div id="tabs-2">
+						<h3 class="subheading">See More Clients With CaseCreed</h3>
+						<div>
+							<%=image_tag('test1.png')%>
+						</div>
+					</div>
+					<div id="tabs-3">
+						<h3 class="subheading">CaseCreed helps Clients find you</h3>
+						<div>
+							<%=image_tag('test2.png')%>
+						</div>
+					</div>
+					<div id="tabs-4">
+						<h3 class="subheading">Let CaseCreed do the work</h3>
+						<div>
+							<%=image_tag('test3.png')%>
+						</div>
+					</div>
+					<div id="tabs-5">
+						<h3 class="subheading">Turn Visitors into Clients</h3>
+						<div>
+							<%=image_tag('test4.png')%>
+						</div>
+					</div>
+				</div>
+
+			</div>
+

@@ -1,0 +1,29 @@
+<div id="lawyer_show">
+	<div class="subheading">SMS Updates</div>
+	<p>Please enter your verification code you received on your <%= @sm.phone_number %> number. <%= link_to 'Send verification code again', send_verification_code_again_sm_path(@sm) %></p>
+<span style="color:blue;""><i>We do not share your information with third parties, and we respect your privacy.</i> </span>
+	<div id="forms">
+	<%= form_for @sm, :url=> verify_phone_sm_path(@sm) do |f| %>
+	<% if @sm.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@sm.errors.count, "error") %> prohibited this sm from being saved:</h2>
+		<ul>
+			<% @sm.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+	<div class="field">
+		<%= f.label :verification_code %>
+		<%= f.text_field :verification_code, :value => nil %>
+		<span class="hint">Enter your 4 digit verfication code</span>
+	</div>
+	<div class="actions">
+		<%= f.submit "Activate", :class=>"orange_big_button" %>
+	</div>
+	<% end %>
+</div>
+</div>
+

@@ -1,0 +1,10 @@
+<%if @user.sm.nil? %>
+
+	<%= render :partial => "users/new_sms_number" %>
+
+	<% else %>
+
+	<%= render :partial => "users/verification_code" %>
+
+	<% end %>
+

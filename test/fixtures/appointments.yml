@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  date: 2010-12-04 07:03:50
+  from: 2010-12-04 07:03:50
+  to: 2010-12-04 07:03:50
+  description: MyText
+
+two:
+  date: 2010-12-04 07:03:50
+  from: 2010-12-04 07:03:50
+  to: 2010-12-04 07:03:50
+  description: MyText

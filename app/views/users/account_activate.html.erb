@@ -1,0 +1,13 @@
+<% if @activated==1 %>
+<div id="forms">
+	<div class="subheading">Account Activated</div>
+	Your account has been activated please <%= link_to 'login', login_path %>
+</div>
+<% else %>
+<div id="forms">
+	<div class="subheading">Invalid Link</div>
+	Sorry the link is invalid.
+</div>
+
+<% end %>
+

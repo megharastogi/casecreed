@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Phone number:</b>
+  <%= @sm.phone_number %>
+</p>
+
+<p>
+  <b>Verification code:</b>
+  <%= @sm.verification_code %>
+</p>
+
+<p>
+  <b>Verified:</b>
+  <%= @sm.verified %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @sm.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_sm_path(@sm) %> |
+<%= link_to 'Back', sms_path %>

@@ -1,0 +1,19 @@
+<div id="forms">
+	<div class="subheading">Forgot your password?<span id="create_new_account">(<%= link_to 'Sign in', login_path%>)</span></div>
+	<div>
+
+		To reset your password, type the full email address you use to sign in to your Casecreed Account.
+	</div>
+	<br/>
+	<%= form_for  @user, :url=>forgot_password_index_path  do |f| %>
+	<div class="field">
+		<%= f.label :email %>
+		<%= f.text_field :email  %><br />
+	</div >
+
+	<div class="field">
+		<%= f.submit "Recover password" ,:class => "orange_really_big_button"  %>
+	</div>
+	<% end %>
+</div>
+

@@ -1,0 +1,38 @@
+<div id="lawyer_show">
+	<div class="subheading">SMS Updates</div>
+<span style="color:blue;""><i>We do not share your information with third parties, and we respect your privacy. </i></span>
+	<% unless @user.sms_number.nil? %>
+	<p>Currently you are receiving updates on your <%=@user.sms_number%> number. <%= link_to "No sms update", no_sms_updates_users_path %></p>
+	<% end %>
+	<div id="forms">
+	<%= form_for(@sm) do |f| %>
+	<% if @sm.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@sm.errors.count, "error") %> prohibited this sm from being saved:</h2>
+		<ul>
+			<% @sm.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+	<div class="field">
+		<%= f.label :phone_number %>
+		<%= f.text_field :phone_number %>
+		<span class="hint">Please enter your 10 digit phone number, e.g. 1234567890</span>
+	</div>
+
+	<div class="field">
+		<%= f.label :carrier %>
+		<%= carrier_select %>
+	</div>
+
+
+	<div class="actions">
+		<%= f.submit "Get Verification Code" , :class=>"orange_really_big_button" %>
+	</div>
+	<% end %>
+</div>
+</div>
+

@@ -1,0 +1,46 @@
+<% if session[:user_id].nil? %>
+	<% else %>
+	<%= render :partial => "layouts/menu" %>
+	<% end %>
+	<% if show_search_box %>
+	<div id="tag_line">Find lawyers in Atlanta</div>
+	<div id="top_block">
+		<div id="search_box_container">
+			<div id="search_box">
+				<div id="forms">
+					<%= form_tag(search_lawyers_path) do -%>
+					<div class="field">
+						<%= label_tag 'Category' %>
+
+
+						<%= select_tag "category", options_from_collection_for_select(@categories, "id", "name"), :include_blank => "Please select a category"  %>
+					</div>
+					<div class="field">
+						<%= label_tag 'Keyword' %>
+						<%= text_field_tag 'keyword' %>
+					</div>
+					<div class="field">
+						<%= label_tag 'City' %>
+						<%= text_field_tag 'keyword','Atlanta', :disabled=>true %>
+					</div>
+
+					<div class="field" id="search_box_button">
+						<%= submit_tag 'Search' , :class =>"orange_button" %>&nbsp;&nbsp;&nbsp;<%= link_to "All Lawyers", lawyers_path ,:class =>"lawyers" %>
+					</div>
+					<% end -%>
+				</div>
+			</div>
+		</div>
+		<% if params[:action] == "index" && params[:controller] == "lawyers"%>
+		<div class="google_maps" id="map_canvas" style="width:492px;height:200px;">
+
+		</div>
+		<% else%>
+		<div id="promotion">
+			<iframe title="YouTube video player" width="477" height="190" src="http://www.youtube.com/embed/PngWeqgxKK4" frameborder="0" allowfullscreen></iframe>
+		</div>
+		<% end %>
+
+	</div>
+	<% end %>
+
